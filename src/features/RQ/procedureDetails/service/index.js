@@ -1,0 +1,1 @@
+export {postNewProcedureVersion,downloadFile,getAllVersionProcedure,deleteProcedure,checkIsLastVersion,modifyProcedure} from './procedureDetailsService'

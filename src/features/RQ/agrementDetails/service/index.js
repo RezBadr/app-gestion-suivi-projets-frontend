@@ -1,0 +1,1 @@
+export {postNewAgrementVersion,downloadFile,getAllVersionAgrement,deleteAgrement,checkIsLastVersion,modifyAgrement} from './agrementDetailsService'
