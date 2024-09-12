@@ -3,11 +3,26 @@ import axios from 'axios';
 const BASE_URL = 'https://adm-projet-backend-app-7ba8b1bdf78d.herokuapp.com/auth';
 
 export const login = async (LoginRequestBody) => {
-    try {
-      const response = await axios.post( BASE_URL + '/login', LoginRequestBody); // Send login request
-      return response.data;
-    } catch (error) {
-      console.error('Error during login:', error); // Log error
-      throw error;
+  try {
+    const response = await axios.post(`${BASE_URL}/login`, LoginRequestBody, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true, // Utilisé si vous gérez les cookies ou l'authentification basée sur les sessions
+    });
+    return response.data;
+  } catch (error) {
+    // Gestion plus détaillée des erreurs
+    if (error.response) {
+      // Réponse reçue avec un code d'erreur de la part du serveur
+      console.error('Error response from server:', error.response.status, error.response.data);
+    } else if (error.request) {
+      // Aucun retour de réponse du serveur
+      console.error('No response received:', error.request);
+    } else {
+      // Erreur lors de la configuration de la requête
+      console.error('Error during request setup:', error.message);
     }
-  };
+    throw error;
+  }
+};
