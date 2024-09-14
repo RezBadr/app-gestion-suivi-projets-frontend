@@ -8,7 +8,7 @@ const api = process.env.REACT_APP_BACKEND_API_URL;
 
 
 
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = 'https://adm-projet-backend-app-7ba8b1bdf78d.herokuapp.com/';
 const userApi = axios.create({
     baseURL: BASE_URL + 'auth', // Base URL for user-related API calls
 });
