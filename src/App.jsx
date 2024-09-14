@@ -24,7 +24,7 @@ import { isUserInfoMissing } from "./services/updateUserInfo";
 import admin from "./routes/admin";
 import Loading from './layouts/Loading';
 import { ToastContainer} from 'react-toastify';
-import Home from "./pages/CP/Home";
+
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   const [routes, setRoutes] = useState([]);
@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const data = getUserInfo();
-
+      console.log("data : ",data)
       if (data) {
         setUserInfo({
           username: data.username,
@@ -43,9 +43,6 @@ function App() {
 
         const roleBasedRoutes = getRoutesForRole(data.authority);
         setRoutes(roleBasedRoutes);
-        console.log("User Info:", data);
-        console.log("Role Based Routes:", roleBasedRoutes);
-
         const missingInfo = await isUserInfoMissing();
         setInfoMissing(missingInfo);
       } else {
@@ -97,7 +94,6 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="/login" element={<SignInSide />} />
-          <Route path="/CP/home" element={ <Home />} />
           {userInfo ? (
             routes.length > 0 ? (
               <Route path="/" element={<Dashboard routes={routes} />}>
