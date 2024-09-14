@@ -24,7 +24,7 @@ import { isUserInfoMissing } from "./services/updateUserInfo";
 import admin from "./routes/admin";
 import Loading from './layouts/Loading';
 import { ToastContainer} from 'react-toastify';
-
+import Home from "./pages/CP/Home";
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   const [routes, setRoutes] = useState([]);
@@ -97,6 +97,7 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="/login" element={<SignInSide />} />
+          <Route path="/CP/home" element={ <Home />} />
           {userInfo ? (
             routes.length > 0 ? (
               <Route path="/" element={<Dashboard routes={routes} />}>
