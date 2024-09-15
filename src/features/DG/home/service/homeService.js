@@ -8,7 +8,7 @@ const token = getToken();
 // Fonction pour obtenir les marchés actuels
 export const getCurrentMarkets = async () => {
     try {
-        const response = await axios.get(`${api}/markets/currentMarkets`,{ 
+        const response = await axios.get(`${api}/markets`,{ 
             headers: {
             'Authorization': `Bearer ${token}`}});
         return response.data; // Retourne les données des marchés actuels
@@ -17,4 +17,3 @@ export const getCurrentMarkets = async () => {
         throw error; // Relancer l'erreur pour que l'appelant puisse la gérer
     }
 };
-

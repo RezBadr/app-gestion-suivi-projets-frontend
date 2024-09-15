@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardContent, Typography, Button, Box } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const MarketCard = ({
@@ -8,7 +7,6 @@ const MarketCard = ({
   number,
   company,
   onConsult,
-  onSettings,
 }) => {
   return (
     <Card
@@ -62,23 +60,6 @@ const MarketCard = ({
             }}
           >
             Consulter
-          </Button>
-
-          <Button
-            variant="outlined"
-            startIcon={<SettingsIcon />}
-            onClick={onSettings}
-            sx={{
-              borderColor: "#137C8B",
-              color: "#137C8B",
-              "&:hover": {
-                backgroundColor: "#f0f0f0",
-                borderColor: "#105f71",
-                color: "#105f71",
-              },
-            }}
-          >
-            Paramètres
           </Button>
         </Box>
       </CardContent>

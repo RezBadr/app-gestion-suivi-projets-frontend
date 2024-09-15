@@ -44,6 +44,12 @@ export const RQ = [
         element: <></>,
       },
       {
+        icon: <DoneAllIcon />,
+        name: "LOT OUVRAGE D’ART",
+        path: "/lot-ouvrage-d-art",
+        element: <></>,
+      },
+      {
         path: "/settings",
         element: <Settings />,
       },

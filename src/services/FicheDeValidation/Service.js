@@ -1,6 +1,7 @@
 // services/fileUploadService.js
 
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { getToken } from '../../services/tokenService'; 
 
 
@@ -28,9 +29,20 @@ export const createValidation = async (validationDtoReceived, filesWithClassemen
                 'Authorization': `Bearer ${getToken()}`
             }
         });
+        toast.success('Fiche de validation créé avec succès');
         return response.data;
     } catch (error) {
-        console.error('Erreur lors de l\'envoi des données:', error);
+      if (error.response) {
+        if (error.response.status === 409 && error.response.data.error === "Ressource already exists") { 
+            toast.error(`Erreur lors la création de fiche de validation: ${error.response.data.message}`);
+        }
+        if (error.response.status === 400 && error.response.data.error === "Empty file") { 
+            toast.error(`Erreur lors la création de fiche de validation: ${error.response.data.message}`);
+        }
+        if (error.response.status === 400 && error.response.data.error === "Unsupported file extension") { 
+            toast.error(`Erreur lors la création de fiche de validation: ${error.response.data.message}`);
+        }
+      } 
         throw error;
     }
 };
@@ -92,8 +104,7 @@ export const changeEtat = (id, status, note) => {
       }
     )
     .then(response => {
-      console.log('État mis à jour avec succès');
-      console.log(response.data);
+      toast.success('Etat a été changé avec succès');
       return response.data;
     })
     .catch(error => {
@@ -184,7 +195,7 @@ export const getPks = async (prestation) =>{
           }
             
         });
-
+        toast.success('Mise à jour de fiche de validation complète avec succès');
         return response.data;
     } catch (error) {
         console.error('Error updating validation file:', error);

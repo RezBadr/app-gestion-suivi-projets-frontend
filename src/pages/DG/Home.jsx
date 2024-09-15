@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import { MarketCard } from "../../features/CP/home";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { getCurrentMarkets } from "../../features/CP/home/service";
+import { getCurrentMarkets } from "../../features/DG/home/service";
 import { useState } from "react";
 import { getUserRole } from "../../services/userService";
 

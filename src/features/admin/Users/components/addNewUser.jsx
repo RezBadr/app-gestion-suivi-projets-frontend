@@ -1,26 +1,22 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
-import { createNewUser } from '../services/usersService'; 
+import { createNewUser, getAllUsers } from '../services/usersService'; 
 import { toast } from 'react-toastify';
-import { getAllUsers } from '../services/usersService'; 
 import 'react-toastify/dist/ReactToastify.css';
 
 function AddNewUser() {
   const [open, setOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
+  const [role, setRole] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
-
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
+  };
+
+  const handleChangeRole = (event) => {
+    setRole(event.target.value);
   };
 
   const handleClickOpen = () => {
@@ -35,7 +31,7 @@ function AddNewUser() {
     event.preventDefault();
     try {
       setIsLoading(true);
-      await createNewUser({ username: email, roles: "CHEFDEPROJET" });
+      await createNewUser({ username: email, roles: role });
       toast.success('Utilisateur créé avec succès !');
       setIsLoading(false);
       handleClose();
@@ -77,21 +73,34 @@ function AddNewUser() {
             required
             id="email"
             name="email"
-            label="Email Address"
+            label="Adresse Email"
             type="email"
             fullWidth
             variant="standard"
             value={email}
             onChange={handleChangeEmail}
           />
+          <FormControl fullWidth variant="standard" margin="normal" required>
+            <InputLabel id="role-label">Rôle</InputLabel>
+            <Select
+              labelId="role-label"
+              id="role"
+              value={role}
+              onChange={handleChangeRole}
+              label="Rôle"
+            >
+              <MenuItem value="DIRECTEURGENERAL">Directeur Général</MenuItem>
+              <MenuItem value="CHEFDEPROJET">Chef de Projet</MenuItem>
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Annuler</Button> 
+          <Button onClick={handleClose}>Annuler</Button>
           <Button
             type="submit"
             disabled={isLoading}
           >
-              {isLoading ? 'En cours...' : 'Ajouter'}
+            {isLoading ? 'En cours...' : 'Ajouter'}
           </Button>
         </DialogActions>
       </Dialog>
