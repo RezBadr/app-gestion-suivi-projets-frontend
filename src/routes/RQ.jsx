@@ -1,6 +1,7 @@
 import HomeIcon from "@mui/icons-material/Home";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 import { ProceduresListPage, ProcedureDetails, AgrementsListPage, AgrementDetails } from "../pages/RQ";
 import FicheDeValidationPage from "../pages/FicheDeValidationPage.jsx";
