@@ -125,11 +125,11 @@ export default function AddingForm({ open, handleClose, setProcedures }) {
             Annuler
           </Button>
           <Button
-            variant="contained"
+            variant={isLoading ? "outlined" : "contained"}
             onClick={handleAddClick}
-            desiable={isLoading}
+            disabled={isLoading}
           >
-            Ajouter
+            {isLoading ? "En cours" : "Ajouter"}
           </Button>
         </DialogActions>
       </Dialog>

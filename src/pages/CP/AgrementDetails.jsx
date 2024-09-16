@@ -21,7 +21,6 @@ export default function AgrementDetailsForCl() {
     setOpenConfirmationDialog(false);
   };
   const handleClickValidButton = () => {
-    console.log("je marche bien")
     setOpenConfirmationDialog(true);
   };
   const [openNoteDialog, setOpenNoteDialog] = React.useState(false);
@@ -35,7 +34,6 @@ export default function AgrementDetailsForCl() {
   React.useEffect(() => {
     setAgrement(state?.agrement);
   },[state])
-
   return (
     <Box
       sx={{

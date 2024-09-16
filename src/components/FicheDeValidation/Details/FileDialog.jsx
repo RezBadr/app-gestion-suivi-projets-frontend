@@ -59,7 +59,7 @@ const FileDialog = ({ openFileDialog, handleCloseFileDialog, prestation, validat
                         e.stopPropagation(); // Empêche la propagation de l'événement au ListItem
                         handleDownload(fvFileName);
                       }}
-                      desiable={isLoading}
+                      disabled={isLoading}
                     >
                       <DownloadIcon />
                     </IconButton>

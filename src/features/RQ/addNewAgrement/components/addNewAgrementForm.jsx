@@ -53,7 +53,7 @@ export default function AddingForm({ open, handleClose, setAgrements }) {
       return;
     }
     try {
-      setIsLoading(ture);
+      setIsLoading(true);
       const newAgrement = await postNewAgrement(agrementName, file);
       setAgrements((prev) => [...prev, newAgrement]);
       resetForm();
@@ -125,11 +125,11 @@ export default function AddingForm({ open, handleClose, setAgrements }) {
             Annuler
           </Button>
           <Button
-            variant="contained"
+            variant={isLoading ? "outlined" : "contained"}
             onClick={handleAddClick}
-            desiable={isLoading}
+            disabled={isLoading}
           >
-            Ajouter
+            {isLoading ? "En cours" : "Ajouter"}
           </Button>
         </DialogActions>
       </Dialog>

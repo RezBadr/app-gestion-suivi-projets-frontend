@@ -20,12 +20,14 @@ export default function ConfirmationDialog({
   setFicheDeValidation
 }) {
   const theme = useTheme();
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const handleConfirmClick = async () => {
+    setIsLoading(true)
     const data = await changeEtat(validationFileId, true, null);
     setFicheDeValidation(data);
+    setIsLoading(false)
     handleCloseConfirmationDialog();
-    
   };
 
   return (
@@ -64,6 +66,7 @@ export default function ConfirmationDialog({
               handleConfirmClick();
               handleCloseConfirmationDialog();
             }}
+            disabled={isLoading}
           >
             Confirmer
           </Button>

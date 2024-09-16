@@ -21,7 +21,6 @@ export default function ProcedureDetailsForCl() {
     setOpenConfirmationDialog(false);
   };
   const handleClickValidButton = () => {
-    console.log("je marche bien")
     setOpenConfirmationDialog(true);
   };
   const [openNoteDialog, setOpenNoteDialog] = React.useState(false);

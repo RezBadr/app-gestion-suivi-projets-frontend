@@ -50,10 +50,10 @@ const UpdateMarket = () => {
   
         // Transform the response data
         const transformedRoles = {
-          QUALITICIEN: response.data.usersRole["[Role(roleId=6, authority=QUALITICIEN)]"] || '',
-          CHEFDEQUALITE: response.data.usersRole["[Role(roleId=4, authority=CHEFDEQUALITE)]"] || '',
-          CHEFDELOT: response.data.usersRole["[Role(roleId=5, authority=CHEFDELOT)]"] || '',
-          TECHNICIENDETRAVAUX: response.data.usersRole["[Role(roleId=3, authority=TECHNICIENDETRAVAUX)]"] || ''
+          QUALITICIEN: response.data.usersRole["[Role(roleId=7, authority=QUALITICIEN)]"] || '',
+          CHEFDEQUALITE: response.data.usersRole["[Role(roleId=5, authority=CHEFDEQUALITE)]"] || '',
+          CHEFDELOT: response.data.usersRole["[Role(roleId=6, authority=CHEFDELOT)]"] || '',
+          TECHNICIENDETRAVAUX: response.data.usersRole["[Role(roleId=4, authority=TECHNICIENDETRAVAUX)]"] || ''
         };
   
         setMainObject({

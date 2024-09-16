@@ -41,7 +41,6 @@ const CombinedComponent = ({ open, onClose, prestation, onFileUpdated, validatio
     if (file) {
       try {
         const response = await updateFileOfValidationFile(validationFileId, fileLabel, file, natureFile);
-        console.log('File updated successfully:', response);
         setSelectedFiles((prev) => ({
           ...prev,
           [key]: file.name,
