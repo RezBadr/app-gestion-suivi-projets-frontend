@@ -248,7 +248,7 @@ export default function AgrementStatus({
                 }}
               >
                 {/* Box 3: 60% height */}
-                <p>{renderNote(noteCp)}</p>
+                <p>{noteCp}</p>
               </Box>
             </Box>
           </Box>

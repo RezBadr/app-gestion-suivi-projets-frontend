@@ -37,7 +37,7 @@ export default function List({ fiches, prestation }) {
       filterable: false,
       renderCell: (params) => {
         const { pkStartRight, pkEndRight } = params.row;
-        return pkStartRight && pkEndRight ? (
+        return pkStartRight != null && pkEndRight != null ? (
           <div style={{ display: "flex", alignItems: "center" }}>
             du {pkStartRight} au {pkEndRight}
             <ArrowForwardIosIcon style={{ marginLeft: 8 }} />
