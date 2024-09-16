@@ -29,6 +29,7 @@ export default function AddingForm({ open, handleClose, setAgrements }) {
   const [agrementName, setAgrementName] = React.useState("");
   const [file, setFile] = React.useState(null);
   const [error, setError] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleAgrementNameChange = (event) => {
     setAgrementName(event.target.value);
@@ -52,10 +53,11 @@ export default function AddingForm({ open, handleClose, setAgrements }) {
       return;
     }
     try {
-      console.log("test create new agrement");
+      setIsLoading(ture);
       const newAgrement = await postNewAgrement(agrementName, file);
       setAgrements((prev) => [...prev, newAgrement]);
       resetForm();
+      setIsLoading(flase);
       handleClose();
     } catch (error) {
       console.error("Error adding agrement:", error);
@@ -83,7 +85,7 @@ export default function AddingForm({ open, handleClose, setAgrements }) {
         <DialogTitle>
           <Stack direction="row" spacing={2}>
             <AddBoxRoundedIcon color={theme.palette.primary.main} />
-            <Typography>Ajouter une procédure</Typography>
+            <Typography>Ajouter un Agrément</Typography>
           </Stack>
         </DialogTitle>
         <DialogContent>
@@ -125,6 +127,7 @@ export default function AddingForm({ open, handleClose, setAgrements }) {
           <Button
             variant="contained"
             onClick={handleAddClick}
+            desiable={isLoading}
           >
             Ajouter
           </Button>

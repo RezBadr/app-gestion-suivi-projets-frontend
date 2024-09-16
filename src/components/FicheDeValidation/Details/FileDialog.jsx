@@ -7,6 +7,7 @@ import { MockData } from '../../../data/MockData';
 
 const FileDialog = ({ openFileDialog, handleCloseFileDialog, prestation, validationFileId }) => {
   const files = MockData[prestation] || [];
+  const [isLoading, setIsLoading] = React.useState(false);
 
   // // Fonction pour récupérer tous les fichiers associés à un fichier PV donné
   // const getAssociatedFiles = (fileName) => {
@@ -26,9 +27,10 @@ const FileDialog = ({ openFileDialog, handleCloseFileDialog, prestation, validat
   // };
 
   const handleDownload = async (fvFileName) => {
-    console.log("pv file" , fvFileName)
+    setIsLoading(true);
     try {
       await downloadFiles(validationFileId, fvFileName);
+      setIsLoading(false);
     } catch (error) {
       console.error('Error downloading files:', error);
     }
@@ -57,6 +59,7 @@ const FileDialog = ({ openFileDialog, handleCloseFileDialog, prestation, validat
                         e.stopPropagation(); // Empêche la propagation de l'événement au ListItem
                         handleDownload(fvFileName);
                       }}
+                      desiable={isLoading}
                     >
                       <DownloadIcon />
                     </IconButton>

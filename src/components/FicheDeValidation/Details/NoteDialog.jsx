@@ -26,10 +26,13 @@ export default function NoteDialog({
   const handleNoteChange =(event)=>{
     setNote(event.target.value);
   }
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleSendReject = async () => {
+    setIsLoading(true);
     const data = await changeEtat(validationFileId,false,note);
     setFicheDeValidation(data);
+    setIsLoading(false);
     handleCloseNoteDialog();
   }
 
@@ -84,7 +87,7 @@ export default function NoteDialog({
         <Button variant="outlined" color="error" onClick={handleCloseNoteDialog}>
   Annuler
 </Button>
-<Button variant="contained" endIcon={<SendIcon />} onClick={handleSendReject}>
+<Button variant="contained" endIcon={<SendIcon />} onClick={handleSendReject} desiable={isLoading}>
   Envoyer
 </Button>
         </DialogActions>

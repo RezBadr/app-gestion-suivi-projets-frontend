@@ -29,6 +29,7 @@ export default function AddingForm({ open, handleClose, setProcedures }) {
   const [procedureName, setProcedureName] = React.useState("");
   const [file, setFile] = React.useState(null);
   const [error, setError] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleProcedureNameChange = (event) => {
     setProcedureName(event.target.value);
@@ -52,9 +53,11 @@ export default function AddingForm({ open, handleClose, setProcedures }) {
       return;
     }
     try {
+      setIsLoading(true);
       const newProcedure = await postNewProcedure(procedureName, file);
       setProcedures((prev) => [...prev, newProcedure]);
       resetForm();
+      setIsLoading(false);
       handleClose();
     } catch (error) {
       console.error("Error adding procedure:", error);
@@ -124,6 +127,7 @@ export default function AddingForm({ open, handleClose, setProcedures }) {
           <Button
             variant="contained"
             onClick={handleAddClick}
+            desiable={isLoading}
           >
             Ajouter
           </Button>

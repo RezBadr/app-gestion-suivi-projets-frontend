@@ -287,7 +287,7 @@ export const uploadGraphe = async (prestation, grapheNature, data) => {
               }
           }
       );
-      console.log('Graphe uploaded successfully:', response.data);
+      toast.success("Les valeurs de graphes sont ajoutées")
   } catch (error) {
       console.error('Error uploading graphe:', error);
   }

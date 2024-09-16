@@ -123,7 +123,7 @@ const InfoSection = ({
         </Box>
       )}
 
-      {pkStartRight && pkEndRight && (
+      {pkStartRight != null && pkEndRight != null && (
         <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <Typography>{`coté droit : du PK ${pkStartRight} au PK ${pkEndRight}`}</Typography>
           <KeyboardArrowRightIcon />

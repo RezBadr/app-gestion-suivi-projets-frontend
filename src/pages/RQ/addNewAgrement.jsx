@@ -17,7 +17,7 @@ export default function AddNewAgrement() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
       <AgrementHeader
-        title={"Agrement"}
+        title={"Agrément des matériaux"}
         setAddAgrementFormOpen={setAddAgrementFormOpen}
       />
       <Divider variant="middle" />

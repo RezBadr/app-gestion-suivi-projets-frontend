@@ -10,7 +10,7 @@ const AgrementsListPage = () => {
     const marketId = location.state?.marketId;    
     return (
         <Box sx={{display : 'flex' , flexDirection : 'column' , width : '100%'}}>
-            <Header title={"Procédures d’exécution"}/>
+            <Header title={"Agrément des matériaux"}/>
             <Divider variant="middle" />
             <AgrementsList marketId={marketId}/>
         </Box>
