@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { MarketCard } from "../../features/CP/home";
+import { MarketCard } from "../../features/DG/home";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { getCurrentMarkets } from "../../features/DG/home/service";

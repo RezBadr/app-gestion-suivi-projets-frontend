@@ -88,7 +88,7 @@ export default function AgrementsList({ agrementId }) {
             selected={select === index}
             onClick={() => {
               setSelected(index);
-              navigate("/CP/agrementDetails", { state: { agrement } });
+              navigate("/DG/agrementDetails", { state: { agrement } });
             }}
           >
             <StyledListItemIcon>
