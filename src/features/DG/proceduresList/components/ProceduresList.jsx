@@ -139,7 +139,7 @@ export default function DataGridDemo({ marketId }) {
           hideFooter
           getRowId={(row) => row.procedureId}
           onRowClick={(rowData) => {
-            navigate("/CP/procedureDetails", {
+            navigate("/DG/procedureDetails", {
               state: { procedure: rowData.row },
             });
           }}
