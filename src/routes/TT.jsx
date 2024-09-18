@@ -3,16 +3,14 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 
-import {
-  Home,
-} from "../pages/TT";
+import Home from "../pages/TT/Home.jsx";
 import FirstLoginForm from "../pages/FirstLoginForm.jsx";
 import Settings from "../pages/Settings.jsx";
 import LotTerrassement from "../pages/LotTerrassement.jsx";
 import FicheDeValidationPage from "../pages/FicheDeValidationPage";
 import FicheDeValidationList from "../pages/FicheDeValidation/FicheDeValidationList.jsx";
 import FicheDeValidationDetails from "../pages/FicheDeValidation/FicheDeValidationDetails.jsx";
-import ServiceNotAvailablePage from "../pages/ServiceNotAvailablePage.jsx"
+import ServiceNotAvailablePage from "../pages/ServiceNotAvailablePage.jsx";
 
 export const TT = [
   {
@@ -37,13 +35,13 @@ export const TT = [
         icon: <AssignmentTurnedInIcon />,
         name: "LOT CHAUSSEE",
         path: "/LOT CHAUSSEE",
-        element: <ServiceNotAvailablePage/>,
+        element: <ServiceNotAvailablePage />,
       },
       {
         icon: <DoneAllIcon />,
         name: "LOT OUVRAGE D’ART",
         path: "/LOT OUVRAGE D’ART",
-        element: <ServiceNotAvailablePage/>,
+        element: <ServiceNotAvailablePage />,
       },
 
       {
