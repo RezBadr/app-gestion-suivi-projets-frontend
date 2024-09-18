@@ -57,12 +57,7 @@ export const TT = [
         path: "/FicheDeValidationList",
         element: <FicheDeValidationList />,
       },
-      {
-        icon: <DoneAllIcon />,
-        name: "LOT OUVRAGE D’ART",
-        path: "/lot-ouvrage-d-art",
-        element: <></>,
-      },
+    
     ],
   },
 ];
