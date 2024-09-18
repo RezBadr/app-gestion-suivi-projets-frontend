@@ -12,6 +12,7 @@ import LotTerrassement from "../pages/LotTerrassement.jsx";
 import FicheDeValidationPage from "../pages/FicheDeValidationPage";
 import FicheDeValidationList from "../pages/FicheDeValidation/FicheDeValidationList.jsx";
 import FicheDeValidationDetails from "../pages/FicheDeValidation/FicheDeValidationDetails.jsx";
+import ServiceNotAvailablePage from "../pages/ServiceNotAvailablePage.jsx"
 
 export const TT = [
   {
@@ -36,13 +37,13 @@ export const TT = [
         icon: <AssignmentTurnedInIcon />,
         name: "LOT CHAUSSEE",
         path: "/LOT CHAUSSEE",
-        element: <></>,
+        element: <ServiceNotAvailablePage/>,
       },
       {
         icon: <DoneAllIcon />,
         name: "LOT OUVRAGE D’ART",
         path: "/LOT OUVRAGE D’ART",
-        element: <></>,
+        element: <ServiceNotAvailablePage/>,
       },
 
       {
