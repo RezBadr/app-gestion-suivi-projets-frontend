@@ -86,32 +86,56 @@ export const getValidationFileWithMarketAndPrestation = async (marketid, prestat
 
 
 
-export const changeEtat = (id, status, note) => {
-    // Encode special characters while keeping spaces
-    const encodedNote = encodeURIComponent(note).replace(/%20/g, ' ');
+// export const changeEtat = (id, status, note) => {
+//     // Encode special characters while keeping spaces
+//     const encodedNote = encodeURIComponent(note).replace(/%20/g, ' ');
   
-    return axios.put(
-      `${api}/validationFiles/etat/${id}`,
-      null,  // No request body
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-        params: {
-          status: status,
-          note: encodedNote
-        }
+//     return axios.put(
+//       `${api}/validationFiles/etat/${id}`,
+//       null,  // No request body
+//       {
+//         headers: {
+//           'Authorization': `Bearer ${token}`
+//         },
+//         params: {
+//           status: status,
+//           note: encodedNote
+//         }
+//       }
+//     )
+//     .then(response => {
+//       toast.success('Etat a été changé avec succès');
+//       return response.data;
+//     })
+//     .catch(error => {
+//       console.error('Erreur lors de la mise à jour de l\'état', error);
+//       throw error; // Re-throw the error if you want to handle it later
+//     });
+//   };
+export const changeEtat = (id, status, note) => {
+  return axios.put(
+    `${api}/validationFiles/etat/${id}`,
+    null,  // No request body
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        status: status,
+        note: note  // Pas besoin d'encodeURIComponent ici
       }
-    )
-    .then(response => {
-      toast.success('Etat a été changé avec succès');
-      return response.data;
-    })
-    .catch(error => {
-      console.error('Erreur lors de la mise à jour de l\'état', error);
-      throw error; // Re-throw the error if you want to handle it later
-    });
-  };
+    }
+  )
+  .then(response => {
+    toast.success('Etat a été changé avec succès');
+    return response.data;
+  })
+  .catch(error => {
+    console.error('Erreur lors de la mise à jour de l\'état', error);
+    throw error; // Re-throw the error if you want to handle it later
+  });
+};
+
 
   export const downloadFiles = async (ficheValidationId, fileName) => {
     try {
