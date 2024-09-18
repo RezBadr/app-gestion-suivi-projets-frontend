@@ -5,7 +5,7 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 import {
   Home,
-} from "../pages/CP";
+} from "../pages/TT";
 import FirstLoginForm from "../pages/FirstLoginForm.jsx";
 import Settings from "../pages/Settings.jsx";
 import LotTerrassement from "../pages/LotTerrassement.jsx";
