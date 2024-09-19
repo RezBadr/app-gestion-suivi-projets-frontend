@@ -182,7 +182,6 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge> */}
         </IconButton>
-        <p>Notifications</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
