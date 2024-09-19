@@ -61,12 +61,7 @@ export default function List({ fiches, prestation }) {
       flex: 0.2,
       filterable: false,
     },
-    {
-      field: "typeOfControl",
-      headerName: "Type de Controle",
-      flex: 0.2,
-      filterable: false,
-    },
+
   ];
   
   if (getUserRole === "DG") {
