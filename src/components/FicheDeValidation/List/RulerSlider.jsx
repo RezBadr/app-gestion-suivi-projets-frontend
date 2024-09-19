@@ -85,24 +85,27 @@ const generateMarksAndIntervals = (data) => {
   // Trier les marques pour qu'elles soient dans l'ordre
   allMarks.sort((a, b) => a.value - b.value);
 
-  // Gérer les intervalles qui se chevauchent
-  const mergedIntervals = intervals.reduce((acc, [start, end]) => {
-    if (acc.length === 0) {
-      acc.push([start, end]);
-    } else {
-      const lastInterval = acc[acc.length - 1];
-      if (start <= lastInterval[1]) {
-        // Fusionner les intervalles s'ils se chevauchent
-        lastInterval[1] = Math.max(lastInterval[1], end);
+  // Gérer les intervalles qui se chevauchent ou sont adjacents
+  const mergedIntervals = intervals
+    .sort((a, b) => a[0] - b[0]) // Trier les intervalles par point de départ
+    .reduce((acc, currentInterval) => {
+      if (acc.length === 0) {
+        acc.push(currentInterval);
       } else {
-        acc.push([start, end]);
+        const lastInterval = acc[acc.length - 1];
+        // Si l'intervalle actuel chevauche ou est adjacent au dernier intervalle, fusionner
+        if (currentInterval[0] <= lastInterval[1]) {
+          lastInterval[1] = Math.max(lastInterval[1], currentInterval[1]);
+        } else {
+          acc.push(currentInterval);
+        }
       }
-    }
-    return acc;
-  }, []);
+      return acc;
+    }, []);
 
   return { marks: allMarks, intervals: mergedIntervals };
 };
+
 
 // Composant pour le slider de la ruler avec intervalles
 function RulerSlider({ intervals, marks }) {
@@ -180,6 +183,7 @@ export default function DualRulerSlider({ prestation, setPkLast, pkLast, marketI
           data = await getPks(prestation);
         } else {
           data = await getPksByMarket(marketId, prestation);
+          console.log("dat--",data)
         }
         setPkLast(data);
       } catch (error) {

@@ -1,5 +1,3 @@
-// ServiceNotAvailablePage.jsx
-
 import React from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';

@@ -17,9 +17,9 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { logout } from "../../services/userService";
 import { removeToken, removeUserInfo } from "../../services/tokenService";
 import { getUserRole } from "../../services/userService";
-import {
-  getCurrentMarketsOfUser,
-} from "../../services/userService";
+import { getCurrentMarketsOfUser } from "../../services/userService";
+import { Link } from 'react-router-dom'; // Import du composant Link
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -90,7 +90,7 @@ export default function PrimarySearchAppBar() {
     };
 
     fetchData();
-  }, [localStorage.getItem('market')]);
+  }, [localStorage.getItem("market")]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -182,7 +182,6 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge> */}
         </IconButton>
-        <p>Notifications</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -203,14 +202,36 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="h4"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            ADM PROJET
-          </Typography>
+          {["DG", "TT", "CP"].includes(getUserRole()) ? (
+            <Link
+              to={`/${getUserRole()}/home`} // Génère l'URL si le rôle correspond
+              style={{ textDecoration: "none", color: "inherit" }} // Styles pour enlever la déco par défaut
+            >
+              <Typography
+                variant="h4"
+                noWrap
+                component="div"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                }}
+              >
+                ADM PROJET
+              </Typography>
+            </Link>
+          ) : (
+            <Typography
+              variant="h4"
+              noWrap
+              sx={{
+                display: { xs: "none", sm: "block" },
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              ADM PROJET
+            </Typography>
+          )}
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -222,10 +243,11 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            {!(getUserRole() == "ADMIN") &&(<Typography>{marketName}</Typography>)}
+            {!(getUserRole() == "ADMIN") && (
+              <Typography>{marketName}</Typography>
+            )}
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-       
             <IconButton
               size="large"
               edge="end"
