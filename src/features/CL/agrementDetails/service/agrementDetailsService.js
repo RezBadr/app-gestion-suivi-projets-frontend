@@ -34,7 +34,6 @@ export const downloadFile = (agrementId) => {
 };
 export const changeEtat = (id, status, note) => {
   // Encode special characters while keeping spaces
-  const encodedNote = encodeURIComponent(note).replace(/%20/g, ' ');
 
   return axios.put(
     `${api}/Agrements/etat/${id}`,
@@ -45,7 +44,7 @@ export const changeEtat = (id, status, note) => {
       },
       params: {
         status: status,
-        note: encodedNote
+        note: note
       }
     }
   )

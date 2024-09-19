@@ -52,7 +52,7 @@ export const changeEtat = (id, status, note) => {
       },
       params: {
         status: status,
-        note: encodedNote
+        note: note
       }
     }
   )
