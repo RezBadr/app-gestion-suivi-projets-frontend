@@ -24,36 +24,49 @@ import { isUserInfoMissing } from "./services/updateUserInfo";
 import admin from "./routes/admin";
 import Loading from './layouts/Loading';
 import { ToastContainer} from 'react-toastify';
-
+import {removeToken} from './services/tokenService';
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [infoMissing, setInfoMissing] = useState(false);
-
   useEffect(() => {
     const fetchData = async () => {
-      const data = getUserInfo();
-      console.log("data : ",data)
-      if (data) {
-        setUserInfo({
-          username: data.username,
-          authority: data.authority,
-        });
-
-        const roleBasedRoutes = getRoutesForRole(data.authority);
-        setRoutes(roleBasedRoutes);
-        const missingInfo = await isUserInfoMissing();
-        setInfoMissing(missingInfo);
-      } else {
-        console.log("No user info found in cookies");
+      try {
+        const data = getUserInfo();
+  
+        if (data) {
+          setUserInfo({
+            username: data.username,
+            authority: data.authority,
+          });
+  
+          const roleBasedRoutes = getRoutesForRole(data.authority);
+          setRoutes(roleBasedRoutes);
+  
+          const missingInfo = await isUserInfoMissing();
+          setInfoMissing(missingInfo);
+        } else {
+          console.log("No user info found in cookies");
+        }
+  
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          console.log("Unauthorized (401), clearing cookies...");
+          removeToken();
+          // removeUserInfo();
+          setUserInfo(null);
+        } else {
+          console.error("An error occurred: ", error);
+        }
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     };
-
+  
     fetchData();
   }, []);
+  
 
   const getRoutesForRole = (role) => {
     switch (role) {

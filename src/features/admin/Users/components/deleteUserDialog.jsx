@@ -17,7 +17,7 @@ export default function DeleteUserDialog({ userId }) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  console.log(userId)
   const handleClose = () => {
     setOpen(false);
   };
@@ -33,7 +33,6 @@ export default function DeleteUserDialog({ userId }) {
     } finally {
         setIsLoading(false);
         handleClose();
-        window.location.reload();
     }
   };
 

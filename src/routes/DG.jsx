@@ -21,6 +21,8 @@ export const DG = [
     layout: "DG",
     pages: [
       {
+        icon : <HomeIcon />,
+        name : "ACCUEIL",
         path: "/home",
         element: <Home />,
       },

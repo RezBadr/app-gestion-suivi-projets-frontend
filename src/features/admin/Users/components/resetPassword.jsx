@@ -41,8 +41,13 @@ export default function ResetPasswordDialog({ username, userId }) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" startIcon={<RefreshIcon />} onClick={handleClickOpen}>
-        Réinitialiser le mot de passe
+      <Button 
+        size="small" 
+        variant="outlined" 
+        startIcon={<RefreshIcon />} 
+        onClick={handleClickOpen}
+      >
+        Réinitialiser 
       </Button>
       <Dialog
         open={open}

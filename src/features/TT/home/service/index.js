@@ -1,0 +1,1 @@
+export {getCurrentMarkets} from './homeService'

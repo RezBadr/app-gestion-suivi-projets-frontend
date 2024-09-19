@@ -149,9 +149,9 @@ export default function PrimarySearchAppBar() {
           handleSettingClick();
         }}
       >
-        Settings
+        Paramètres
       </MenuItem>
-      <MenuItem onClick={handleLogoutClick}>logout</MenuItem>
+      <MenuItem onClick={handleLogoutClick}>Déconnexion</MenuItem>
     </Menu>
   );
 
@@ -216,8 +216,8 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+              placeholder="Recherche…"
+              inputProps={{ "aria-label": "Recherche" }}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

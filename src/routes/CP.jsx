@@ -11,11 +11,9 @@ import {
   AgrementsListPage,
   Home,
 } from "../pages/CP";
-import FirstLoginForm from "../pages/FirstLoginForm.jsx";
 import Settings from "../pages/Settings.jsx";
 import LotTerrassement from "../pages/LotTerrassement.jsx";
 import UpdateMarket from "../pages/CP/UpdateMarket.jsx";
-// import FicheValidation from '../pages/FicheValidation.jsx'
 import FicheDeValidationPage from "../pages/FicheDeValidationPage";
 import FicheDeValidationList from "../pages/FicheDeValidation/FicheDeValidationList.jsx";
 import FicheDeValidationDetails from "../pages/FicheDeValidation/FicheDeValidationDetails.jsx";
@@ -25,6 +23,8 @@ export const CP = [
     layout: "CP",
     pages: [
       {
+        icon : <HomeIcon />,
+        name : "ACCUEIL",
         path: "/home",
         element: <Home />,
       },
