@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://adm-projet-backend-app-7ba8b1bdf78d.herokuapp.com/auth';
+const BASE_URL = process.env.REACT_APP_BACKEND_AUTH_URL;
 
 export const login = async (LoginRequestBody) => {
   try {
