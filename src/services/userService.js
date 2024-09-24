@@ -10,7 +10,7 @@ const api = process.env.REACT_APP_BACKEND_API_URL;
 
 const BASE_URL = process.env.REACT_APP_BACKEND_AUTH_URL;
 const userApi = axios.create({
-    baseURL: BASE_URL + 'auth', // Base URL for user-related API calls
+    baseURL: BASE_URL , // Base URL for user-related API calls
 });
 
 // Interceptor to add JWT token to requests
