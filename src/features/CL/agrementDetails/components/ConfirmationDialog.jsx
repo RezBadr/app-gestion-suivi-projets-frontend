@@ -22,7 +22,7 @@ export default function ConfirmationDialog({
   const theme = useTheme();
 
   const handleConfirmClick = async () => {
-    const data = await changeEtat(agrementId, true, null);
+    const data = await changeEtat(agrementId, true, "");
     setAgrement((prev) => ({
       ...prev,
       statusCl: data.statusCl, 

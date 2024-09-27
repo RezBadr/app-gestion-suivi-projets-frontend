@@ -22,7 +22,7 @@ export default function ConfirmationDialog({
   const theme = useTheme();
 
   const handleConfirmClick = async () => {
-    const data = await changeEtat(procedureId, true, null);
+    const data = await changeEtat(procedureId, true, "");
     setProcedure((prev) => ({
       ...prev,
       statusCp: data.statusCp, 

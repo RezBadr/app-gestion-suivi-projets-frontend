@@ -24,7 +24,7 @@ export default function ConfirmationDialog({
 
   const handleConfirmClick = async () => {
     setIsLoading(true)
-    const data = await changeEtat(validationFileId, true, null);
+    const data = await changeEtat(validationFileId, true, "");
     setFicheDeValidation(data);
     setIsLoading(false)
     handleCloseConfirmationDialog();
