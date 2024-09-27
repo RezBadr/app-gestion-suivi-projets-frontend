@@ -36,7 +36,6 @@ export const downloadFile = (procedureId) => {
 export const changeEtat = (id, status, note) => {
   // Encode special characters while keeping spaces
   const encodedNote = encodeURIComponent(note).replace(/%20/g, ' ');
-
   return axios.put(
     `${api}/procedures/etat/${id}`,
     null,  // No request body
