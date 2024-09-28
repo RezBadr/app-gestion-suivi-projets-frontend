@@ -18,15 +18,13 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Clean install dependencies
+      - name: npm install, build, and test
         env:
-          NPM_CONFIG_LEGACY_PEER_DEPS: true
+          NPM_CONFIG_LEGACY_PEER_DEPS: true  # Set the environment variable here
         run: |
-          npm ci  # Clean install all dependencies to ensure everything is correctly set
-
-      - name: Build application
-        run: |
+          npm install
           npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -44,7 +42,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -62,7 +60,7 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_12C1C2A784734603B8B08E86060DF8A7 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_55FE8DAF740E4629B9E2BCC1A19262D0 }}
 
-      - name: Deploy to Azure Web App
+      - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
